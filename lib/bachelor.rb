@@ -22,25 +22,22 @@ def count_contestants_by_hometown(data, hometown)
   # returns the total number of contestants from the specified hometown
   count = 0
   
-  data.each do |season_info|
-    season_info[1].each { |contestant| count += 1 if contestant["hometown"] == hometown }
+  data.each do |season_num, contestant_hash|
+    contestant_hash.each { |contestant| count += 1 if contestant["hometown"] == hometown }
   end
   count  
 end
 
 def get_occupation(data, hometown)
   # returns the occupation of the first contestant from the specified hometown
-  occupation = ""
   
   data.each do |season_info|
     season_info[1].each do |contestant|
       if contestant["hometown"] == hometown
-        occupation = contestant["occupation"]
-        break
+        return contestant["occupation"]
       end
     end
   end
-  occupation
 end
 
 def get_average_age_for_season(data, season)
