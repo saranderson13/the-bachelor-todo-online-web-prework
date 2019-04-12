@@ -12,13 +12,10 @@ end
 
 def get_contestant_name(data, occupation)
   # returns the name of the contestant with the specified occupation
-  lady_with_job = ""
   
-  data.each do |season_info|
-    season_info[1].each { |contestant| lady_with_job = contestant["name"] if contestant["occupation"] == occupation }
+  data.each do |season_num, contestant_hash|
+    contestant_hash.each { |contestant| return contestant["name"] if contestant["occupation"] == occupation }
   end
-  
-  lady_with_job
 end
 
 def count_contestants_by_hometown(data, hometown)
