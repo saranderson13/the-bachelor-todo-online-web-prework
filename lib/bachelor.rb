@@ -31,12 +31,8 @@ end
 def get_occupation(data, hometown)
   # returns the occupation of the first contestant from the specified hometown
   
-  data.each do |season_info|
-    season_info[1].each do |contestant|
-      if contestant["hometown"] == hometown
-        return contestant["occupation"]
-      end
-    end
+  data.each do |season_num, contestant_hash|
+    contestant_hash.each { |contestant| return contestant["occupation"] if contestant["hometown"] == hometown }
   end
 end
 
