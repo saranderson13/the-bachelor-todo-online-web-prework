@@ -2,15 +2,12 @@ require 'pry'
 
 def get_first_name_of_season_winner(data, season)
   # returns the first name of the winner of the specified season
-  winner = ""
   
-  data.each do |season_info|
-    binding.pry
-    if season_info[0] == season
-      season_info[1].each { |contestant| winner = contestant["name"].split.first if contestant["status"] == "Winner" }
+  data.each do |season_num, contestant_hash|
+    if season_num == season
+      contestant_hash.each { |contestant| return contestant["name"].split.first if contestant["status"] == "Winner" }
     end
   end
-  winner
 end
 
 def get_contestant_name(data, occupation)
